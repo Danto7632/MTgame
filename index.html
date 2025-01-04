@@ -10,36 +10,29 @@
       text-align: center;
       margin: 0;
       padding: 0;
-      height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      height: 100vh;
       box-sizing: border-box;
     }
     #display {
       font-size: 2em;
       margin: 20px;
-      word-wrap: break-word;
+      word-break: break-word;
+      max-width: 90%;
     }
     .button-container {
       display: flex;
       justify-content: center;
       gap: 10px;
       margin-top: 20px;
-      flex-wrap: wrap;
     }
     button {
       padding: 10px 20px;
       font-size: 1em;
       cursor: pointer;
-      flex: 1;
-      max-width: 150px;
-    }
-    #result {
-      font-size: 1.2em;
-      margin-top: 20px;
-      color: green;
     }
   </style>
 </head>
@@ -53,8 +46,6 @@
     <button onclick="showNewProblem()">새 문제</button>
     <button onclick="showAnswer()">정답 보기</button>
   </div>
-
-  <div id="result"></div>
 
   <script>
     const words = [
@@ -91,21 +82,18 @@
     function showNewWord() {
       const randomWord = getRandomElement(words);
       document.getElementById("display").innerText = randomWord;
-      document.getElementById("result").innerText = "";
     }
 
     function showNewProblem() {
       currentProblem = getRandomElement(problems);
       document.getElementById("display").innerText = currentProblem.split("=")[0].trim();
-      document.getElementById("result").innerText = "";
     }
 
     function showAnswer() {
       if (currentProblem) {
-        document.getElementById("display").innerText = currentProblem;
-        document.getElementById("result").innerText = `정답: ${currentProblem.split("=")[1].trim()}`;
+        document.getElementById("display").innerText = `정답: ${currentProblem.split("=")[1].trim()}`;
       } else {
-        document.getElementById("result").innerText = "먼저 문제를 생성하세요!";
+        document.getElementById("display").innerText = "먼저 문제를 생성하세요!";
       }
     }
   </script>
