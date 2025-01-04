@@ -18,7 +18,7 @@
       box-sizing: border-box;
     }
     #display {
-      font-size: 9em;
+      font-size: 14em;
       margin: 20px;
     }
     .button-container {
@@ -28,8 +28,8 @@
       margin-top: 20px;
     }
     button {
-      padding: 10px 20px;
-      font-size: 1em;
+      padding: 20px 40px;
+      font-size: 2em;
       cursor: pointer;
     }
     .answer {
@@ -40,7 +40,7 @@
 <body>
   <h1>랜덤 단어 & 곱셈 게임</h1>
 
-  <div id="display">단어 또는 문제가 표시됩니다.</div>
+  <div id="display">???</div>
 
   <div class="button-container">
     <button onclick="showNewWord()">새 단어</button>
@@ -94,7 +94,7 @@
       if (currentProblem) {
         document.getElementById("display").innerHTML = `<span class='answer'>정답: ${currentProblem.split("=")[1].trim()}</span>`;
       } else {
-        document.getElementById("display").innerText = "먼저 문제를 생성하세요!";
+        document.getElementById("display").innerText = "???";
       }
     }
   </script>
