@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>랜덤 단어 & 곱셈 게임</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 20px;
+    }
+    #display {
+      font-size: 7em;
+      margin: 20px;
+    }
+    .button-container {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+    #result {
+      font-size: 1.2em;
+      margin-top: 20px;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+  <h1>랜덤 단어 & 곱셈 게임</h1>
+
+  <div id="display">단어 또는 문제가 표시됩니다.</div>
+
+  <div class="button-container">
+    <button onclick="showNewWord()">새 단어</button>
+    <button onclick="showNewProblem()">새 문제</button>
+    <button onclick="showAnswer()">정답 보기</button>
+  </div>
+
+  <div id="result"></div>
+
+  <script>
+    const words = [
+      "우주선", "공룡", "마법사", "외계인", "무지개", "유령", "천사", "괴물", "비행기", "성",
+      "바다표범", "빙하", "마법 지팡이", "도시", "로봇", "불꽃", "번지점프", "요정", "고래", "인형",
+      "해골", "수트", "과일", "드래곤", "황금열쇠", "비행선", "거울", "잠수함", "섬", "조각상",
+      "아기자기한 집", "불꽃놀이", "태양", "여왕", "감옥", "용", "사막", "거인", "태권도 선수", "화산",
+      "돌고래", "눈사람", "악당", "달", "바닷가재", "장난감", "우표", "땅콩버터", "불꽃", "빵",
+      "옷장", "포도", "집시", "책갈피", "공작", "모자", "악기", "장갑", "풍선", "벽화",
+      "사탕", "호박", "보석", "초콜릿", "야구장", "꽃병", "접시", "연필", "라디오", "배트맨",
+      "수족관", "다리", "전등", "침대", "박물관", "의자", "비누", "전화기", "우산", "로켓",
+      "의사 가운", "서랍", "바이올린", "바퀴", "풍경", "노래방", "전화기", "자물쇠", "자전거", "안경",
+      "통조림", "박쥐", "핸드백", "벽돌", "카메라", "나침반", "스키", "비둘기", "도넛", "구름"
+    ];
+
+    const problems = [
+      "19 x 25 = 475", "14 x 31 = 434", "17 x 32 = 544", "12 x 22 = 264", "18 x 23 = 414", "15 x 33 = 495",
+      "13 x 29 = 377", "16 x 24 = 384", "11 x 34 = 374", "19 x 31 = 589", "14 x 23 = 322", "18 x 35 = 630",
+      "17 x 29 = 493", "15 x 21 = 315", "13 x 33 = 429", "16 x 32 = 512", "12 x 21 = 252", "19 x 34 = 646",
+      "14 x 35 = 490", "18 x 22 = 396", "17 x 23 = 391", "11 x 32 = 352", "15 x 22 = 330", "13 x 31 = 403",
+      "16 x 33 = 528", "12 x 24 = 288", "19 x 21 = 399", "14 x 33 = 462", "17 x 35 = 595", "18 x 24 = 432",
+      "15 x 31 = 465", "13 x 23 = 299", "16 x 35 = 560", "12 x 35 = 420", "19 x 32 = 608", "14 x 22 = 308",
+      "18 x 33 = 594", "17 x 31 = 527", "15 x 24 = 360", "13 x 34 = 442", "16 x 31 = 496", "11 x 35 = 385",
+      "19 x 33 = 627", "14 x 34 = 476", "18 x 25 = 450", "17 x 24 = 408", "15 x 23 = 345", "13 x 32 = 416",
+      "16 x 34 = 544", "12 x 33 = 396"
+    ];
+
+    let currentProblem = "";
+
+    function getRandomElement(arr) {
+      return arr[Math.floor(Math.random() * arr.length)];
+    }
+
+    function showNewWord() {
+      const randomWord = getRandomElement(words);
+      document.getElementById("display").innerText = randomWord;
+      document.getElementById("result").innerText = "";
+    }
+
+    function showNewProblem() {
+      currentProblem = getRandomElement(problems);
+      document.getElementById("display").innerText = currentProblem.split("=")[0].trim();
+      document.getElementById("result").innerText = "";
+    }
+
+    function showAnswer() {
+      if (currentProblem) {
+        const answer = currentProblem.split("=")[1].trim();
+        document.getElementById("display").innerText = `${currentProblem.split("=")[0].trim()} = ${answer}`;
+        document.getElementById("result").innerText = "";
+      } else {
+        document.getElementById("result").innerText = "먼저 문제를 생성하세요!";
+      }
+    }
+  </script>
+</body>
+</html>
