@@ -18,10 +18,8 @@
       box-sizing: border-box;
     }
     #display {
-      font-size: 2em;
+      font-size: 9em;
       margin: 20px;
-      word-break: break-word;
-      max-width: 90%;
     }
     .button-container {
       display: flex;
@@ -33,6 +31,9 @@
       padding: 10px 20px;
       font-size: 1em;
       cursor: pointer;
+    }
+    .answer {
+      color: green;
     }
   </style>
 </head>
@@ -91,7 +92,7 @@
 
     function showAnswer() {
       if (currentProblem) {
-        document.getElementById("display").innerText = `정답: ${currentProblem.split("=")[1].trim()}`;
+        document.getElementById("display").innerHTML = `<span class='answer'>정답: ${currentProblem.split("=")[1].trim()}</span>`;
       } else {
         document.getElementById("display").innerText = "먼저 문제를 생성하세요!";
       }
